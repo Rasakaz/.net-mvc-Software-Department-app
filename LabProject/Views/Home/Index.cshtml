@@ -1,0 +1,125 @@
+﻿@model LabProject.Models.User
+
+@{
+    Layout = null;
+}
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Software Engineering department</title>
+
+
+    <link href="~/Content/HomeStyle.css" rel="stylesheet" />
+
+    <script src="~/Scripts/jquery-3.3.1.js"></script>
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+    <script type="text/javascript">
+        var selector_clicked = null;
+        var setBackground = (element_id) => {
+            if (selector_clicked && selector_clicked != element_id) {
+                document.getElementById(selector_clicked).style.backgroundColor = "rgb(75,75,75)";
+                document.getElementById(selector_clicked).style.textDecoration = "none";
+            }
+        }
+
+        var changeColor = (element_id) => {
+            document.getElementById(element_id).style.backgroundColor = "rgb(84,204,33)";
+            document.getElementById(element_id).style.textDecoration = "underline";
+        }
+
+        $(document).ready(function () {
+            $("#administrator_selector").click(function (e) {
+
+                setBackground('administrator_selector');
+                selector_clicked = "administrator_selector";
+
+                changeColor(selector_clicked);
+
+
+            });
+        });
+
+
+        $(document).ready(function () {
+            $("#lecture_selector").click(function (e) {
+
+                setBackground('lecture_selector');
+                selector_clicked = "lecture_selector";
+
+                changeColor(selector_clicked);
+
+            });
+        });
+
+
+        $(document).ready(function () {
+            $("#student_selector").click(function (e) {
+
+                setBackground('student_selector');
+                selector_clicked = "student_selector";
+
+                changeColor(selector_clicked);
+
+            });
+        });
+
+
+    </script>
+</head>
+<body>
+
+    <div class="home_page">
+        <img id="sce_logo" src="~/Picuters/sceLogo.png" />
+        <h1 id="home_page_title">Software Engineering Department</h1>
+       
+
+        <div class="home_authentication">
+            <ul class="user_selector">
+                <li id="administrator_selector">Administator</li>
+                <li id="lecture_selector">Lecture</li>
+                <li id="student_selector">Student</li>
+
+            </ul>
+            @using (Html.BeginForm("Sumbit", "Home", FormMethod.Post, new { @class = "user_details" }))
+            {
+                <div id="user_name">
+                    <i> User name:</i>
+                    @Html.TextBoxFor(m => m.userName, htmlAttributes: new { @class = "inputs", @id = "uName_submit" })
+
+                </div>
+
+                <div id="user_name">
+                    <i>Password:</i>
+
+                    @Html.TextBoxFor(m => m.password, htmlAttributes: new { @class = "inputs", @id = "uName_submit" })
+                </div>
+            }
+            <!--
+            <div class="user_details">
+                <div id="user_name">
+                    <i> User name:</i>
+                    <input class="inputs" id="uName_submit" type="text" value="" />
+                </div>
+
+                <div id="user_name">
+                    <i>Password:</i>
+                    <input class="inputs" id="password_submit" type="text" value="" />
+                </div>
+            </div>
+            -->
+
+
+            <div />
+            <div />
+
+</body>
+
+</html>
+
+
+
