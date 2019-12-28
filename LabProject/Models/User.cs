@@ -9,10 +9,10 @@ namespace LabProject.Models
     public class User
     {
 
-        [Required]
-        public string userName { get; set; }
+        [Required(ErrorMessage = "field is must")]
+        public string UserName { get; set; }
 
-        [Required]
-        public string password { get; set; }
+        [Required(ErrorMessage = "field is must")]
+        public string Password { get; set; }
     }
 }

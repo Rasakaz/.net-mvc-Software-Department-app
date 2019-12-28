@@ -69,14 +69,28 @@
         });
 
 
+        $(document).ready(function () {
+            $("#login_btn").click(function (e) {
+
+                document.getElementById('login_btn').style.background = "rgb(84,204,33)";
+                setTimeout(function () {
+                    document.getElementById('login_btn').style.background = "white";
+                }, 500);
+                
+            });
+        });
+
+
     </script>
 </head>
 <body>
 
     <div class="home_page">
+
+        
         <img id="sce_logo" src="~/Picuters/sceLogo.png" />
         <h1 id="home_page_title">Software Engineering Department</h1>
-       
+
 
         <div class="home_authentication">
             <ul class="user_selector">
@@ -85,33 +99,37 @@
                 <li id="student_selector">Student</li>
 
             </ul>
-            @using (Html.BeginForm("Sumbit", "Home", FormMethod.Post, new { @class = "user_details" }))
+            @using (Html.BeginForm("Submit", "Home", FormMethod.Post, new { @class = "user_details" }))
             {
-                <div id="user_name">
-                    <i> User name:</i>
-                    @Html.TextBoxFor(m => m.userName, htmlAttributes: new { @class = "inputs", @id = "uName_submit" })
+            <div id="user_name">
+                <i> User name:</i>
+                @Html.TextBoxFor(m => m.UserName, htmlAttributes: new { @class = "inputs", @id = "uName_submit" })  @Html.ValidationMessageFor(x => x.UserName)
 
-                </div>
+            </div>
 
                 <div id="user_name">
                     <i>Password:</i>
 
-                    @Html.TextBoxFor(m => m.password, htmlAttributes: new { @class = "inputs", @id = "uName_submit" })
+                    @Html.TextBoxFor(m => m.Password, htmlAttributes: new { @class = "inputs", @id = "password_submit" }) @Html.ValidationMessageFor(x => x.Password)
+
+
                 </div>
+
+                <input id="login_btn" type="submit" value="Login" />
             }
             <!--
-            <div class="user_details">
-                <div id="user_name">
-                    <i> User name:</i>
-                    <input class="inputs" id="uName_submit" type="text" value="" />
-                </div>
-
-                <div id="user_name">
-                    <i>Password:</i>
-                    <input class="inputs" id="password_submit" type="text" value="" />
-                </div>
+        <div class="user_details">
+            <div id="user_name">
+                <i> User name:</i>
+                <input class="inputs" id="uName_submit" type="text" value="" />
             </div>
-            -->
+
+            <div id="user_name">
+                <i>Password:</i>
+                <input class="inputs" id="password_submit" type="text" value="" />
+            </div>
+        </div>
+        -->
 
 
             <div />

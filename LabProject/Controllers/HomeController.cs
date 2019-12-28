@@ -18,10 +18,13 @@ namespace LabProject.Controllers
         {
             if (ModelState.IsValid)
             {
-                ViewBag["userName"] = user.userName;
-                ViewBag["password"] = user.password;
+                Console.Write("ok");
+                ViewBag.uName = user.UserName;
+
+                return View("ShowUserLog");
             }
-            return View();
+            Console.Write("not");
+            return View("Index");
         }
 
     }
