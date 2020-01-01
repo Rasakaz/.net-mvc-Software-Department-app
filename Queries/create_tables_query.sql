@@ -1,10 +1,4 @@
 drop table Users;
-drop table Courses;
-drop table Students;
-drop table Workers;
-drop table Administrators;
-drop table Lecturers;
-
 create table Users (
 	UserName varchar(50) primary key not null,
 	FirstName varchar(50) not null,
@@ -22,6 +16,8 @@ create table Courses(
 	MoedBDate Date not null
 
 )
+
+
 
 create table Students (
 	UserName varchar(50) references Users(UserName) primary key,
