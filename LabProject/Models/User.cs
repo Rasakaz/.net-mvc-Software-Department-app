@@ -10,9 +10,23 @@ namespace LabProject.Models
     {
 
         [Required(ErrorMessage = "field is must")]
+        [Key]
         public string UserName { get; set; }
+
+        /*
+        [Required(ErrorMessage = "please choose your user type")]
+        public string UserType { get; set; }
+        */
 
         [Required(ErrorMessage = "field is must")]
         public string Password { get; set; }
+
+        
+
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string Address { get; set; }
+
     }
+
 }

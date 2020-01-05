@@ -1,4 +1,5 @@
 ﻿@model LabProject.Models.User
+@using LabProject.Models
 
 @{
     Layout = null;
@@ -20,7 +21,7 @@
     <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
     <script type="text/javascript">
  
-        var selector_clicked = null;
+        var selector_clicked = "";
         var setBackground = (element_id) => {
             if (selector_clicked && selector_clicked != element_id) {
                 document.getElementById(selector_clicked).style.backgroundColor = "rgb(75,75,75)";
@@ -72,12 +73,14 @@
 
         $(document).ready(function () {
             $("#login_btn").click(function (e) {
+                
+      
+                document.getElementById('userType_input').value = selector_clicked.slice(0, selector_clicked.indexOf('_'));
 
                 document.getElementById('login_btn').style.background = "rgb(84,204,33)";
                 setTimeout(function () {
                     document.getElementById('login_btn').style.background = "white";
                 }, 500);
-
             });
         });
 
@@ -93,48 +96,44 @@
 
 
         <div class="home_authentication">
-            <ul class="user_selector">
-                <li id="administrator_selector">Administator</li>
-                <li id="lecture_selector">Lecture</li>
+               
+            <ul class="user_selector" id="none">
+                <li id="administrator_selector">Administrator</li>
+                <li id="lecture_selector">Lecturer</li>
                 <li id="student_selector">Student</li>
 
             </ul>
+      
             @using (Html.BeginForm("Submit", "Home", FormMethod.Post, new { @class = "user_details" }))
             {
-            <div id="user_name">
-                <i> User name:</i>
-                @Html.TextBoxFor(m => m.UserName, htmlAttributes: new { @class = "inputs", @id = "uName_submit" })  @Html.ValidationMessageFor(x => x.UserName)
+                @*
+                <div>
+                    @Html.DropDownListFor(m => m.UserType, new SelectList(Enum.GetValues(typeof(userType))), "Select user type", htmlAttributes: new { @class = "inputs" })
+                </div>
+                 *@
+                <br />
+                <div id="user_name">
 
-            </div>
+                    <i> User name:</i>
+                    @Html.TextBoxFor(m => m.UserName, htmlAttributes: new { @class = "inputs", @id = "uName_submit" })  @Html.ValidationMessageFor(x => x.UserName)
+                </div>
 
                 <div id="user_name">
                     <i>Password:</i>
-
                     @Html.TextBoxFor(m => m.Password, htmlAttributes: new { @class = "inputs", @id = "password_submit" }) @Html.ValidationMessageFor(x => x.Password)
-
-
                 </div>
 
+                    <input type="hidden" name="UserType" id="userType_input" />
                 <input id="login_btn" type="submit" value="Login" />
+
+                <div>
+                    @TempData["errorMessage"]
+                </div>
             }
-            <!--
-        <div class="user_details">
-            <div id="user_name">
-                <i> User name:</i>
-                <input class="inputs" id="uName_submit" type="text" value="" />
-            </div>
-
-            <div id="user_name">
-                <i>Password:</i>
-                <input class="inputs" id="password_submit" type="text" value="" />
-            </div>
-        </div>
-        -->
 
 
-            <div />
-            <div />
-
+        <div />
+    <div />
 </body>
 
 </html>

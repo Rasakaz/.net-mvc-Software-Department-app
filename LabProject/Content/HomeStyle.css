@@ -120,6 +120,9 @@
     position: absolute;
     width: 60%;
     right: 0;
+    display: flex;
+    flex-flow:column;
+    border: 2px solid black;
 }
 
 #login_btn {

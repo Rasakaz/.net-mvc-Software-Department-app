@@ -78,3 +78,7 @@ C:\Users\ניב\Desktop\לימודים\שנה ג\תקשורת מחשבים\LabPr
 C:\Users\ניב\Desktop\לימודים\שנה ג\תקשורת מחשבים\LabProject\LabProject\obj\Debug\LabProject.csproj.CopyComplete
 C:\Users\ניב\Desktop\לימודים\שנה ג\תקשורת מחשבים\LabProject\LabProject\obj\Debug\LabProject.dll
 C:\Users\ניב\Desktop\לימודים\שנה ג\תקשורת מחשבים\LabProject\LabProject\obj\Debug\LabProject.pdb
+C:\Users\ניב\Desktop\לימודים\שנה ג\תקשורת מחשבים\LabProject\LabProject\bin\EntityFramework.dll
+C:\Users\ניב\Desktop\לימודים\שנה ג\תקשורת מחשבים\LabProject\LabProject\bin\EntityFramework.SqlServer.dll
+C:\Users\ניב\Desktop\לימודים\שנה ג\תקשורת מחשבים\LabProject\LabProject\bin\EntityFramework.xml
+C:\Users\ניב\Desktop\לימודים\שנה ג\תקשורת מחשבים\LabProject\LabProject\bin\EntityFramework.SqlServer.xml
