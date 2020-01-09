@@ -23,8 +23,15 @@ namespace LabProject
                       "~/Scripts/bootstrap.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap.css",
+                       
                       "~/Content/Site.css"));
         }
+
+        /*
+                     bundles.Add(new StyleBundle("~/Content/css").Include(
+                      "~/Content/bootstrap.css",
+                      "~/Content/Site.css"));
+        */
+        
     }
 }

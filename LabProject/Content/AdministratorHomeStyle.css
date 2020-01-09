@@ -1,0 +1,28 @@
+﻿h2{
+    transform: translate(10%, 50%);
+}
+
+.headers{
+    font-weight: bold;
+}
+
+table {
+    border-collapse: collapse;
+    border-radius: 1em;
+    overflow: hidden;
+    cursor: default;
+}
+
+th, td {
+    padding: 1em;
+    background: #ddd;
+    border-bottom: 4px solid rgb(75,75,75);
+}
+
+
+.adminInformation-content{
+    transform: translate(10%, 10%);
+    height: 80%;
+    width: 80%;
+
+}

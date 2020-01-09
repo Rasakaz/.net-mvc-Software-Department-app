@@ -2,91 +2,83 @@
 @using LabProject.Models
 
 @{
-    Layout = null;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
 }
 
-
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Software Engineering department</title>
-
-
+    
     <link href="~/Content/HomeStyle.css" rel="stylesheet" />
-
+    
     <script src="~/Scripts/jquery-3.3.1.js"></script>
     <script src="~/Scripts/jquery.validate.js"></script>
     <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
     <script type="text/javascript">
- 
-        var selector_clicked = "";
-        var setBackground = (element_id) => {
-            if (selector_clicked && selector_clicked != element_id) {
-                document.getElementById(selector_clicked).style.backgroundColor = "rgb(75,75,75)";
-                document.getElementById(selector_clicked).style.textDecoration = "none";
-            }
+
+    var selector_clicked = "";
+    var setBackground = (element_id) => {
+        if (selector_clicked && selector_clicked != element_id) {
+            document.getElementById(selector_clicked).style.backgroundColor = "rgb(75,75,75)";
+            document.getElementById(selector_clicked).style.textDecoration = "none";
         }
+    }
 
-        var changeColor = (element_id) => {
-            document.getElementById(element_id).style.backgroundColor = "rgb(84,204,33)";
-            document.getElementById(element_id).style.textDecoration = "underline";
-        }
+    var changeColor = (element_id) => {
+        document.getElementById(element_id).style.backgroundColor = "rgb(84,204,33)";
+        document.getElementById(element_id).style.textDecoration = "underline";
+    }
 
-        $(document).ready(function () {
-            $("#administrator_selector").click(function (e) {
+    $(document).ready(function () {
+        $("#administrator_selector").click(function (e) {
 
-                setBackground('administrator_selector');
-                selector_clicked = "administrator_selector";
+            setBackground('administrator_selector');
+            selector_clicked = "administrator_selector";
 
-                changeColor(selector_clicked);
+            changeColor(selector_clicked);
 
 
-            });
         });
+    });
 
 
-        $(document).ready(function () {
-            $("#lecture_selector").click(function (e) {
+    $(document).ready(function () {
+        $("#lecture_selector").click(function (e) {
 
-                setBackground('lecture_selector');
-                selector_clicked = "lecture_selector";
+            setBackground('lecture_selector');
+            selector_clicked = "lecture_selector";
 
-                changeColor(selector_clicked);
+            changeColor(selector_clicked);
 
-            });
         });
+    });
 
 
-        $(document).ready(function () {
-            $("#student_selector").click(function (e) {
+    $(document).ready(function () {
+        $("#student_selector").click(function (e) {
 
-                setBackground('student_selector');
-                selector_clicked = "student_selector";
+            setBackground('student_selector');
+            selector_clicked = "student_selector";
 
-                changeColor(selector_clicked);
+            changeColor(selector_clicked);
 
-            });
         });
+    });
 
 
-        $(document).ready(function () {
-            $("#login_btn").click(function (e) {
-                
-      
-                document.getElementById('userType_input').value = selector_clicked.slice(0, selector_clicked.indexOf('_'));
+    $(document).ready(function () {
+        $("#login_btn").click(function (e) {
 
-                document.getElementById('login_btn').style.background = "rgb(84,204,33)";
-                setTimeout(function () {
-                    document.getElementById('login_btn').style.background = "white";
-                }, 500);
-            });
+
+            document.getElementById('userType_input').value = selector_clicked.slice(0, selector_clicked.indexOf('_'));
+
+            document.getElementById('login_btn').style.background = "rgb(84,204,33)";
+            setTimeout(function () {
+                document.getElementById('login_btn').style.background = "white";
+            }, 500);
         });
+    });
 
     </script>
-</head>
-<body>
+
 
     <div class="home_page">
 
@@ -103,6 +95,10 @@
                 <li id="student_selector">Student</li>
 
             </ul>
+
+            <div>
+                @TempData["errorMessage"]
+            </div>
       
             @using (Html.BeginForm("Submit", "Home", FormMethod.Post, new { @class = "user_details" }))
             {
@@ -110,7 +106,7 @@
                 <div>
                     @Html.DropDownListFor(m => m.UserType, new SelectList(Enum.GetValues(typeof(userType))), "Select user type", htmlAttributes: new { @class = "inputs" })
                 </div>
-                 *@
+                    *@
                 <br />
                 <div id="user_name">
 
@@ -120,23 +116,18 @@
 
                 <div id="user_name">
                     <i>Password:</i>
-                    @Html.TextBoxFor(m => m.Password, htmlAttributes: new { @class = "inputs", @id = "password_submit" }) @Html.ValidationMessageFor(x => x.Password)
+                    @Html.TextBoxFor(m => m.Password, htmlAttributes: new { @class = "inputs", @id = "password_submit" , @Type= "password"}) @Html.ValidationMessageFor(x => x.Password)
                 </div>
 
                     <input type="hidden" name="UserType" id="userType_input" />
                 <input id="login_btn" type="submit" value="Login" />
 
-                <div>
-                    @TempData["errorMessage"]
-                </div>
+               
             }
 
 
         <div />
     <div />
-</body>
-
-</html>
 
 
 

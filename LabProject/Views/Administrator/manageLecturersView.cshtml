@@ -1,0 +1,113 @@
+﻿@model List<User>
+
+@using LabProject.Models
+@{
+
+    ViewBag.Title = "manageLecturersView";
+    Layout = "~/Views/Administrator/AdministratorLayout.cshtml";
+}
+
+
+<link href="~/Content/AdministratorManageLecturers.css" rel="stylesheet" />
+
+<script type="text/javascript">
+
+    var clicked = () => {
+        let checked = true;
+        let lecturerName = document.getElementById('lecturer-name').options[document.getElementById('lecturer-name').selectedIndex].value;
+        let courseName = document.getElementById('CourseName').value;
+        let StartHour = document.getElementById('CourseHour').options[document.getElementById('CourseHour').selectedIndex].value;
+        let courseDay = document.getElementById('CourseDay').options[document.getElementById('CourseDay').selectedIndex].value;
+
+        console.log(courseName);
+        console.logcourseHours
+        console.log(courseDay);
+
+        if (lecturerName == 'Select Lecturer Name') {
+            document.getElementById('v1').innerHTML = 'please choose lecturer name';
+            checked = false;
+        }
+
+        if (courseName == '') {
+            document.getElementById('v2').innerHTML = 'please choose course name';
+            checked = false;
+        }
+
+        if (StartHour == 'Select start hour') {
+            document.getElementById('v3').innerHTML = 'please choose start hour';
+            checked = false;
+        }
+
+        if (courseDay == 'Select course day') {
+            document.getElementById('v4').innerHTML = 'please choose course day';
+            checked = false;
+        }
+
+
+        if (checked) {
+            for (let i = 1; i <= 4; i++)
+                document.getElementById('v' + i).innerHTML = '';
+            window.location.href = 'http://localhost:50770/Administrator/manageLecturers/AddCourseToLecturer';
+        }
+    }
+
+
+</script>
+
+<h2>Manage Lecturers</h2>
+
+<div class="ManageLecturers-content">
+    <div class="inputs">
+        <select id="lecturer-name" name="LecturerName">
+            <option selected disabled  >Select Lecturer Name</option>
+            @{
+                if (Model != null)
+                {
+                    foreach (User obj in Model)
+                    {
+                        <option value="@obj.UserName">
+                            @obj.FirstName @obj.LastName
+                        </option>
+
+                    }
+                }
+            }
+        </select>
+        <input type="text" id="CourseName" value="Course name" title="Course name" name="courseName" />
+        <select id="CourseHour" name="CourseHours">
+            @{
+            <option selected disabled >Select start hour</option>
+                for (int i = 8; i <= 17; i++)
+                {
+                    <option value="@i" >@i:00</option>
+                }
+            }
+        </select>
+        <select id="CourseDay" name="CourseDay">
+            <option selected disabled>Select course day</option>
+            <option value="Sunday">Sunday</option>
+            <option value="Monday">Monday</option>
+            <option value="Tuesday">Tuesday</option>
+            <option value="Wednesday">Wednesday</option>
+            <option value="Thursday">Thursday</option>
+            <option value="Friday">Friday</option>
+
+        </select>
+    </div>
+    <div class="validation-messages">
+        <p id="v1"></p>
+        <p id="v2"></p>
+        <p id="v3"></p>
+        <p id="v4"></p>
+    </div>
+
+</div>
+<input type="button" id="add-btn" value="add" title="" onclick="clicked()" />
+
+@TempData["actionResult"]
+
+<!--
+        <input type="text" id="CourseHours" value="Start hour" title="Course hours" name="CourseHours" />
+        <input type="text" id="CourseDay" value="Course day" title="Course Day" name="CourseDay" />
+
+    -->

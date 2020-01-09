@@ -14,10 +14,16 @@ namespace LabProject
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
 
-                routes.MapRoute(
-                name: "HomePage",
-                url: "",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+            routes.MapRoute(
+                name: "AddCourseToLecturer",
+                url: "Administrator/manageLecturers/AddCourseToLecturer",
+                defaults: new { controller = "Administrator", action = "AddCourseToLecturer", id = UrlParameter.Optional }
+            );
+
+            routes.MapRoute(
+                name: "manageLecturers",
+                url: "Administrator/manageLecturers",
+                defaults: new { controller = "Administrator", action = "ManageLecturers", id = UrlParameter.Optional }
             );
 
             routes.MapRoute(
@@ -26,7 +32,13 @@ namespace LabProject
                 defaults: new { controller = "Administrator", action = "Index", id = UrlParameter.Optional }
             );
 
-            
+
+                routes.MapRoute(
+                name: "HomePage",
+                url: "",
+                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+            );
+
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",

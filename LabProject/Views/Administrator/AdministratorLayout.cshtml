@@ -1,0 +1,94 @@
+﻿
+@using LabProject.Models
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="~/Content/AdministratorStyle.css" rel="stylesheet" />
+    <script type="text/javascript">
+        
+        var selector_clicked = '@ViewData["selector"]';
+
+        var setBackground = (element_id) => {
+            if (selector_clicked && selector_clicked != element_id) {
+                document.getElementById(selector_clicked).style.backgroundColor = "rgb(75,75,75)";
+                document.getElementById(selector_clicked).style.color = 'white';
+                document.getElementById(selector_clicked).style.textDecoration = "none";
+            }
+        }
+
+        var changeColor = (element_id) => {
+           
+            document.getElementById(element_id).style.backgroundColor = 'rgb(94,254,15)';
+            document.getElementById(element_id).style.color = 'rgb(75,75,75)';
+            document.getElementById(element_id).style.textDecoration = "underline";
+        }
+
+
+        $(document).ready(() => {
+            $('#manage_Lecturers').click((e) => {
+                setBackground('manage_Lecturers');
+                selector_clicked = 'manage_Lecturers';
+                changeColor(selector_clicked);
+                window.location.href = 'http://localhost:50770/Administrator/manageLecturers';
+            });
+        });
+
+ 
+        $(document).ready(() => {
+            $('#manage_Students').click((e) => {
+                setBackground('manage_Students');
+                selector_clicked = 'manage_Students';
+                changeColor(selector_clicked);
+            });
+        });
+
+        $(document).ready(() => {
+            $('#manage_Courses').click((e) => {
+                setBackground('manage_Courses');
+                selector_clicked = 'manage_Courses';
+                changeColor(selector_clicked);
+            });
+        });
+
+        $(document).ready(() => {
+            $('#manage_Exams').click((e) => {
+                setBackground('manage_Exams');
+                selector_clicked = 'manage_Exams';
+                changeColor(selector_clicked);
+            });
+        });
+
+        $(document).ready(() => {
+            $('#information').click((e) => {
+                setBackground('information');
+                selector_clicked = 'information';
+                changeColor(selector_clicked);
+                window.location.href = 'http://localhost:50770/Administrator';
+            });
+        })
+
+    </script>
+</head>
+<body onload="changeColor(selector_clicked)">
+    <div class="Administrator-Home">
+        <ul class="Administrator-Menu">
+            <li id="information">Information</li>
+            <li id="manage_Lecturers">Manage Lecturers</li>
+            <li id="manage_Students">Manage Students</li>
+            <li id="manage_Courses" >Manage Courses</li>
+            <li id="manage_Exams">Manage Exams</li>
+        </ul>
+
+        <div class="Administrator-Content" >
+            @RenderBody()
+        </div>
+    </div>
+</body>
+
+</html>

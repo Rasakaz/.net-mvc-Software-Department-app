@@ -1,9 +1,33 @@
-﻿
-@using LabProject.Models
+﻿@model LabProject.Models.User
 @{
-    ViewBag.Title = "AdministratorHome";
-    Layout = null;
+    Layout = "~/Views/Administrator/AdministratorLayout.cshtml";
+
 }
 
-<h2>AdministratorHome</h2>
-Hello @Model.FirstName @Model.LastName !
+<link href="~/Content/AdministratorHomeStyle.css" rel="stylesheet" />
+
+<h2>Information About - @Model.FirstName @Model.LastName</h2>
+
+<div class="adminInformation-content">
+    <table>
+        <tr class="headers">
+            <td>User Name</td>
+            <td>First Name</td>
+            <td>Last Name</td>
+            <td>Password</td>
+            <td>Address</td>
+            <td>Salary</td>
+        </tr>
+        <tr>
+            <td>@Model.UserName</td>
+            <td>@Model.FirstName</td>
+            <td>@Model.LastName</td>
+            <td>@Model.Password</td>
+            <td>@Model.Address</td>
+            <td>@ViewData["salary"]</td>
+        </tr>
+
+    </table>
+
+    
+</div>

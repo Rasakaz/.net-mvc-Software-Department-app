@@ -65,7 +65,7 @@ namespace LabProject.Controllers
                         case "administrator":
                             if (CheckAdministrator(user))
                             {
-                                TempData["userName"] = user.UserName;
+                                Session["userName"] = user.UserName;
                                 return RedirectToAction("Index", "Administrator");
                             }
                             break;
