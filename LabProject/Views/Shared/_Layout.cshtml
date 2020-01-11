@@ -12,8 +12,8 @@
             $("#logout-btn").click(function (e) {
                 document.getElementById('logout-btn').style.textDecoration = "underline";
                 setTimeout(function () {
-                     document.getElementById('logout-btn').style.textDecoration = "none";       
-                   
+                    document.getElementById('logout-btn').style.textDecoration = "none";
+                    window.location.href = 'http://localhost:50770/Home';
                 }, 150);
      
             });
@@ -28,7 +28,7 @@
                 if (Session["firstName"] != null)
                 {
                     <p id="navbar-hello-user">
-                        Hello - @Session["firstName"] @Session["lastName"]
+                        Hello - <strong style="font-size: large">@Session["firstName"] @Session["lastName"]</strong>
                     </p>
                     <p id="logout-btn">LogOut</p>
                 }

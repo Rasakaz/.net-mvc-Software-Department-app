@@ -35,7 +35,7 @@
                 setBackground('manage_Lecturers');
                 selector_clicked = 'manage_Lecturers';
                 changeColor(selector_clicked);
-                window.location.href = 'http://localhost:50770/Administrator/manageLecturers';
+                window.location.href = 'http://localhost:50770/Administrator/ManageLecturers';
             });
         });
 
@@ -45,22 +45,17 @@
                 setBackground('manage_Students');
                 selector_clicked = 'manage_Students';
                 changeColor(selector_clicked);
+                window.location.href = 'http://localhost:50770/Administrator/ManageStudents';
             });
         });
 
-        $(document).ready(() => {
-            $('#manage_Courses').click((e) => {
-                setBackground('manage_Courses');
-                selector_clicked = 'manage_Courses';
-                changeColor(selector_clicked);
-            });
-        });
 
         $(document).ready(() => {
             $('#manage_Exams').click((e) => {
                 setBackground('manage_Exams');
                 selector_clicked = 'manage_Exams';
                 changeColor(selector_clicked);
+                window.location.href = 'http://localhost:50770/Administrator/ManageCourses'
             });
         });
 
@@ -81,8 +76,7 @@
             <li id="information">Information</li>
             <li id="manage_Lecturers">Manage Lecturers</li>
             <li id="manage_Students">Manage Students</li>
-            <li id="manage_Courses" >Manage Courses</li>
-            <li id="manage_Exams">Manage Exams</li>
+            <li id="manage_Exams">Manage Courses</li>
         </ul>
 
         <div class="Administrator-Content" >

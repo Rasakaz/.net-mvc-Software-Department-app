@@ -21,10 +21,12 @@ namespace LabProject.Models
         [Required(ErrorMessage = "field is must")]
         public string Password { get; set; }
 
-        
 
+        [Required(ErrorMessage = "field is must")]
         public string FirstName { get; set; }
+        [Required(ErrorMessage = "field is must")]
         public string LastName { get; set; }
+        [Required(ErrorMessage = "field is must")]
         public string Address { get; set; }
 
     }

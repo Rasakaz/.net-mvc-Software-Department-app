@@ -1,0 +1,48 @@
+﻿@model LabProject.Models.Course
+@{
+    ViewBag.Title = "manageCoursesView";
+    Layout = "~/Views/Administrator/AdministratorLayout.cshtml";
+}
+
+<link href="~/Content/AdministratorManageLecturers.css" rel="stylesheet" />
+<script type="text/javascript">
+
+    $(document).ready(() => {
+        $('#add-btn').click(() => {
+            $('#add-update-value').val('add');
+        });
+    });
+
+    $(document).ready(() => {
+        $('#update-btn').click(() => {
+            $('#add-update-value').val('update');
+        });
+    });
+
+
+</script>
+
+<h2 id="addcoursetolecturer"><u>Add course to student/Update student Grade</u></h2>
+
+@using (Html.BeginForm("CourseAddUpdate", "Administrator", FormMethod.Post, new { @class = "ManageLecturers-content" }))
+{
+    <div class="inputs">
+
+        @Html.TextBoxFor(m => m.CourseName, new { @Value = "Course name" })
+
+        @Html.TextBoxFor(m => m.MoedADate, new { @Value = "First exam date" }) 
+
+        @Html.TextBoxFor(m => m.MoedBDate, new { @Value = "Second exam date" })
+
+
+    </div>
+    <input type="hidden" name="AddUpdateValue" id="add-update-value" />
+    <input type="submit" id="update-btn" value="update" />
+    <input type="submit" id="add-btn" value="add" />
+
+    <ul class="validation-messages">
+        <li> @TempData["v1"]</li>
+        <li> @TempData["v2"]</li>
+        <li> @TempData["v3"]</li>
+    </ul>
+}

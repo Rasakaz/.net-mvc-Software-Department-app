@@ -11,6 +11,7 @@ namespace LabProject.Models
         [Key]
         public string UserName { set; get; }
 
+        [Required(ErrorMessage = "field is must")]
         public double Salary { set; get; }
     }
 }

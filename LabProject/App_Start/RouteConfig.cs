@@ -13,18 +13,50 @@ namespace LabProject
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            
 
+
+
+             routes.MapRoute(
+                name: "LecturerManageStudents",
+                url: "Lecturer/LecturerManageStudents",
+                defaults: new { controller = "Lecturer", action = "LecturerManageStudents", id = UrlParameter.Optional }
+            );
             routes.MapRoute(
                 name: "AddCourseToLecturer",
-                url: "Administrator/manageLecturers/AddCourseToLecturer",
+                url: "Administrator/ManageLecturers/AddCourseToLecturer",
                 defaults: new { controller = "Administrator", action = "AddCourseToLecturer", id = UrlParameter.Optional }
             );
 
             routes.MapRoute(
+            name: "manageCourses",
+            url: "Administrator/ManageCourses",
+            defaults: new { controller = "Administrator", action = "ManageCourses", id = UrlParameter.Optional }
+            );
+
+            routes.MapRoute(
+                name: "manageStudents",
+                url: "Administrator/ManageStudents",
+                defaults: new { controller = "Administrator", action = "ManageStudents", id = UrlParameter.Optional }
+            );
+
+            routes.MapRoute(
                 name: "manageLecturers",
-                url: "Administrator/manageLecturers",
+                url: "Administrator/ManageLecturers",
                 defaults: new { controller = "Administrator", action = "ManageLecturers", id = UrlParameter.Optional }
             );
+
+            routes.MapRoute(
+                name: "LecturerSchedule",
+                url: "Lecturer/ManageLecturers/LecturerSchedule",
+                defaults: new { controller = "Administrator", action = "LecturerSchedule", id = UrlParameter.Optional }
+            );
+
+            routes.MapRoute(
+              name: "LecturerrHome",
+              url: "Lecturer",
+              defaults: new { controller = "Lecturer", action = "LecturerHome", id = UrlParameter.Optional }
+          );
 
             routes.MapRoute(
                 name: "AdministratorHome",

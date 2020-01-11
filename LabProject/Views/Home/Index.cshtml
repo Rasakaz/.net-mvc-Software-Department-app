@@ -7,12 +7,12 @@
 }
 
     
-    <link href="~/Content/HomeStyle.css" rel="stylesheet" />
+<link href="~/Content/HomeStyle.css" rel="stylesheet" />
     
-    <script src="~/Scripts/jquery-3.3.1.js"></script>
-    <script src="~/Scripts/jquery.validate.js"></script>
-    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
-    <script type="text/javascript">
+<script src="~/Scripts/jquery-3.3.1.js"></script>
+<script src="~/Scripts/jquery.validate.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+<script type="text/javascript">
 
     var selector_clicked = "";
     var setBackground = (element_id) => {
@@ -38,18 +38,19 @@
 
         });
     });
-
+    
 
     $(document).ready(function () {
-        $("#lecture_selector").click(function (e) {
+        $("#lecturer_selector").click(function (e) {
 
-            setBackground('lecture_selector');
-            selector_clicked = "lecture_selector";
+            setBackground('lecturer_selector');
+            selector_clicked = "lecturer_selector";
 
             changeColor(selector_clicked);
 
         });
-    });
+        });
+   
 
 
     $(document).ready(function () {
@@ -77,57 +78,52 @@
         });
     });
 
-    </script>
+</script>
 
 
-    <div class="home_page">
+<div class="home_page">
 
         
-        <img id="sce_logo" src="~/Picuters/sceLogo.png" />
-        <h1 id="home_page_title">Software Engineering Department</h1>
+    <img id="sce_logo" src="~/Picuters/sceLogo.png" />
+    <h1 id="home_page_title">Software Engineering Department</h1>
 
 
-        <div class="home_authentication">
+    <div class="home_authentication">
                
-            <ul class="user_selector" id="none">
-                <li id="administrator_selector">Administrator</li>
-                <li id="lecture_selector">Lecturer</li>
-                <li id="student_selector">Student</li>
+        <ul class="user_selector" id="none">
+            <li id="administrator_selector">Administrator</li>
+            <li id="lecturer_selector">Lecturer</li>
+            <li id="student_selector">Student</li>
+        </ul>
 
-            </ul>
-
-            <div>
-                @TempData["errorMessage"]
-            </div>
+        <div>
+            @TempData["errorMessage"]
+        </div>
       
-            @using (Html.BeginForm("Submit", "Home", FormMethod.Post, new { @class = "user_details" }))
-            {
-                @*
-                <div>
-                    @Html.DropDownListFor(m => m.UserType, new SelectList(Enum.GetValues(typeof(userType))), "Select user type", htmlAttributes: new { @class = "inputs" })
-                </div>
-                    *@
-                <br />
-                <div id="user_name">
+        @using (Html.BeginForm("Submit", "Home", FormMethod.Post, new { @class = "user_details" }))
+        {
 
-                    <i> User name:</i>
-                    @Html.TextBoxFor(m => m.UserName, htmlAttributes: new { @class = "inputs", @id = "uName_submit" })  @Html.ValidationMessageFor(x => x.UserName)
-                </div>
+            <br />
+            <div id="user_name">
 
-                <div id="user_name">
-                    <i>Password:</i>
-                    @Html.TextBoxFor(m => m.Password, htmlAttributes: new { @class = "inputs", @id = "password_submit" , @Type= "password"}) @Html.ValidationMessageFor(x => x.Password)
-                </div>
+                <i> User name:</i>
+                @Html.TextBoxFor(m => m.UserName, htmlAttributes: new { @class = "inputs", @id = "uName_submit" })  @Html.ValidationMessageFor(x => x.UserName)
+            </div>
 
-                    <input type="hidden" name="UserType" id="userType_input" />
-                <input id="login_btn" type="submit" value="Login" />
+            <div id="user_name">
+                <i>Password:</i>
+                @Html.TextBoxFor(m => m.Password, htmlAttributes: new { @class = "inputs", @id = "password_submit" , @Type= "password"}) @Html.ValidationMessageFor(x => x.Password)
+            </div>
+
+                <input type="hidden" name="UserType" id="userType_input" />
+            <input id="login_btn" type="submit" value="Login" />
 
                
-            }
+        }
 
 
-        <div />
     <div />
+<div />
 
 
 

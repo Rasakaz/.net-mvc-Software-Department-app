@@ -1,0 +1,65 @@
+﻿@model LabProject.Models.VManageStudents
+@{
+    ViewBag.Title = "manageStudentsView";
+    Layout = "~/Views/Administrator/AdministratorLayout.cshtml";
+}
+
+<link href="~/Content/AdministratorManageLecturers.css" rel="stylesheet" />
+<script type="text/javascript">
+
+    $(document).ready(() => {
+        $('#add-btn').click(() => {
+            console.log('add');
+            $('#add-update-value').val('add');
+        });
+    });
+
+    $(document).ready(() => {
+        $('#update-btn').click(() => {
+            console.log('update');
+            $('#add-update-value').val('update');
+        });
+    });
+
+
+</script>
+
+
+<h2 id="addcoursetolecturer"><u>Add course to student/Update student Grade</u></h2>
+
+@using (Html.BeginForm("AddCourseToStudent", "Administrator", FormMethod.Post, new { @class = "ManageLecturers-content" }))
+{
+    <div class="inputs">
+
+        @Html.DropDownListFor(m => m.CourseToAdd.UserName, Model.GetStudentsList, "Select Studens name")
+
+        @Html.DropDownListFor(m => m.CourseToAdd.CourseName, Model.GetCoursesList, "Select course name")
+
+        @Html.DropDownListFor(m => m.CourseToAdd.LecturerName, Model.GetLecturersList, "Select course lecturer")
+
+        @Html.DropDownListFor(m => m.CourseToAdd.Day, Model.GetDays, "Select course day")
+
+        @Html.DropDownListFor(m => m.CourseToAdd.Hour, Model.GetHours, "Select course hour")
+
+        @Html.TextBoxFor(m => m.CourseToAdd.MoedAGrade, new {@Value = "Update first exam grade" })
+
+        @Html.TextBoxFor(m => m.CourseToAdd.MoedBGrade, new { @Value = "Update second exam grade" })
+
+    </div>
+    <input type="hidden" name="AddUpdateValue" id="add-update-value" />
+    <input type="submit" id="update-btn" value="update" />
+    <input type="submit" id="add-btn" value="add" />
+    <div class="validation-messages">
+        <p> @TempData["v1"]</p>
+        <p> @TempData["v2"]</p>
+        <h2>@TempData["message"]</h2>
+        <p><strong style="color: red">@TempData["v6"]</strong></p>
+        <p><strong style="color: red">@TempData["v7"]</strong></p>
+        <p> @TempData["v3"]</p>
+        <p> @TempData["v4"]</p>
+        <p> @TempData["v5"]</p>
+
+    </div>
+}
+
+

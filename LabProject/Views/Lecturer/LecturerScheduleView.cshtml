@@ -1,0 +1,38 @@
+﻿@model LabProject.Models.VMLecturerSchedule
+@{
+    Layout = "~/Views/Lecturer/LecturerLayout.cshtml";
+}
+
+<link href="~/Content/AdministratorHomeStyle.css" rel="stylesheet" />
+@*
+    <h2>Information About - @Model.FirstName @Model.LastName</h2>
+*@
+
+
+<div class="adminInformation-content">
+    <table>
+        <tr class="headers">
+            <td>Course Name</td>
+            <td>Day</td>
+            <td>Hour</td>
+        </tr>
+            @{
+                foreach (var row in Model.Schedule)
+                {
+                <tr>
+                    <td>@row.CourseName</td>
+                    <td>@row.Day</td>
+                    <td>@row.Hour</td>
+                </tr>
+                }
+            }
+
+    </table>
+
+
+</div>
+            @*
+        <td>@Model.UserName</td>
+        <td>@Model.FirstName</td>
+        <td>@Model.LastName</td>
+            *@

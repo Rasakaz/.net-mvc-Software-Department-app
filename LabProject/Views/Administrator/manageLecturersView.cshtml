@@ -1,4 +1,4 @@
-﻿@model List<User>
+﻿@model LabProject.Models.VManageLecturers
 
 @using LabProject.Models
 @{
@@ -9,105 +9,97 @@
 
 
 <link href="~/Content/AdministratorManageLecturers.css" rel="stylesheet" />
-
 <script type="text/javascript">
 
-    var clicked = () => {
-        let checked = true;
-        let lecturerName = document.getElementById('lecturer-name').options[document.getElementById('lecturer-name').selectedIndex].value;
-        let courseName = document.getElementById('CourseName').value;
-        let StartHour = document.getElementById('CourseHour').options[document.getElementById('CourseHour').selectedIndex].value;
-        let courseDay = document.getElementById('CourseDay').options[document.getElementById('CourseDay').selectedIndex].value;
+    $(document).ready(() => {
+        $('#add-btn').click(() => {
+            console.log('add');
+            $('#add-update-value').val('add');
+        });
+    });
 
-        console.log(courseName);
-        console.logcourseHours
-        console.log(courseDay);
-
-        if (lecturerName == 'Select Lecturer Name') {
-            document.getElementById('v1').innerHTML = 'please choose lecturer name';
-            checked = false;
-        }
-
-        if (courseName == '') {
-            document.getElementById('v2').innerHTML = 'please choose course name';
-            checked = false;
-        }
-
-        if (StartHour == 'Select start hour') {
-            document.getElementById('v3').innerHTML = 'please choose start hour';
-            checked = false;
-        }
-
-        if (courseDay == 'Select course day') {
-            document.getElementById('v4').innerHTML = 'please choose course day';
-            checked = false;
-        }
-
-
-        if (checked) {
-            for (let i = 1; i <= 4; i++)
-                document.getElementById('v' + i).innerHTML = '';
-            window.location.href = 'http://localhost:50770/Administrator/manageLecturers/AddCourseToLecturer';
-        }
-    }
+    $(document).ready(() => {
+        $('#update-btn').click(() => {
+            console.log('update');
+            $('#add-update-value').val('update');
+        });
+    });
 
 
 </script>
 
-<h2>Manage Lecturers</h2>
+<h2 id="addcoursetolecturer"><u>Add course to lecturer/Update course</u></h2>
 
-<div class="ManageLecturers-content">
+
+@using (Html.BeginForm("AddCourseToLecturer", "Administrator", FormMethod.Post, new { @class = "ManageLecturers-content" }))
+{
     <div class="inputs">
-        <select id="lecturer-name" name="LecturerName">
-            <option selected disabled  >Select Lecturer Name</option>
-            @{
-                if (Model != null)
-                {
-                    foreach (User obj in Model)
-                    {
-                        <option value="@obj.UserName">
-                            @obj.FirstName @obj.LastName
-                        </option>
 
-                    }
-                }
-            }
-        </select>
-        <input type="text" id="CourseName" value="Course name" title="Course name" name="courseName" />
-        <select id="CourseHour" name="CourseHours">
-            @{
-            <option selected disabled >Select start hour</option>
-                for (int i = 8; i <= 17; i++)
-                {
-                    <option value="@i" >@i:00</option>
-                }
-            }
-        </select>
-        <select id="CourseDay" name="CourseDay">
-            <option selected disabled>Select course day</option>
-            <option value="Sunday">Sunday</option>
-            <option value="Monday">Monday</option>
-            <option value="Tuesday">Tuesday</option>
-            <option value="Wednesday">Wednesday</option>
-            <option value="Thursday">Thursday</option>
-            <option value="Friday">Friday</option>
+        @Html.DropDownListFor(m => m.CourseToAdd.LecturerName, Model.GetLecturerList, "Select lecturer name")
 
-        </select>
-    </div>
-    <div class="validation-messages">
-        <p id="v1"></p>
-        <p id="v2"></p>
-        <p id="v3"></p>
-        <p id="v4"></p>
+        @Html.DropDownListFor(m => m.CourseToAdd.CourseName, Model.GetCoursesNames, "Select course name")
+
+        @Html.DropDownListFor(m => m.CourseToAdd.Day, Model.GetCoursesDays, "Select course day")
+
+        @Html.DropDownListFor(m => m.CourseToAdd.Hour, Model.GetCoursesHours, "Select course start hour")
+
     </div>
 
-</div>
-<input type="button" id="add-btn" value="add" title="" onclick="clicked()" />
+    <div class="update">
+        @Html.DropDownListFor(m => m.LecturerUpdate.Day, Model.GetCoursesDays, "Update course day")
 
-@TempData["actionResult"]
+        @Html.DropDownListFor(m => m.LecturerUpdate.Hour, Model.GetCoursesHours, "Update course start hour")
+    </div>
 
-<!--
-        <input type="text" id="CourseHours" value="Start hour" title="Course hours" name="CourseHours" />
-        <input type="text" id="CourseDay" value="Course day" title="Course Day" name="CourseDay" />
+    <ul class="validation-messages">
+        <li> @TempData["v1"]</li>
+        <li> @TempData["v2"]</li>
+        <li>@TempData["message"]</li>
+        <li> @TempData["v3"]</li>
+        <li> @TempData["v4"]</li>
+        <li><strong style="color:red">@TempData["v5"]</strong></li>
+    </ul>
 
-    -->
+    <input type="hidden" name="AddUpdateValue" id="add-update-value" />
+    <input type="submit" id="update-btn" value="update" />
+    <input type="submit" id="add-btn" value="add" />
+}
+
+@*
+
+    @using (Html.BeginForm("AddUpdateLecturer", "Administrator", FormMethod.Post, new { @class = "add_update-content" }))
+    {
+        <div class="inputs">
+
+            <i>user name:</i>
+            @Html.TextBoxFor(m => m.User.UserName)
+            <i>password:</i>
+            @Html.TextBoxFor(m => m.User.Password)
+            <i>first name:</i>
+            @Html.TextBoxFor(m => m.User.FirstName)
+            <i>last name:</i>
+            @Html.TextBoxFor(m => m.User.LastName)
+            <i>address:</i>
+            @Html.TextBoxFor(m => m.User.Address)
+            <i>salary:</i>
+            @Html.TextBoxFor(m => m.Lecturer.Salary)
+
+            <ul>
+                <li> @Html.ValidationMessageFor(x => x.User.UserName)</li>
+                <li> @Html.ValidationMessageFor(x => x.User.Password)</li>
+                <li>@Html.ValidationMessageFor(x => x.User.LastName)</li>
+                <li> @Html.ValidationMessageFor(x => x.User.Address)</li>
+                <li> @Html.ValidationMessageFor(x => x.Lecturer.Salary)</li>
+            </ul>
+            <h2>@TempData["meesage"]</h2>
+
+        </div>
+        <input type="hidden" name="AddUpdateValue" id="add-update-value" />
+        <input type="submit" id="update-btn" value="update" />
+        <input type="submit" id="add-btn" value="add" />
+
+    }
+
+
+*@
+

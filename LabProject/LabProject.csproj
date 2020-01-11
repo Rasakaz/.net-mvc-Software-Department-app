@@ -136,17 +136,28 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AdministratorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LecturerController.cs" />
     <Compile Include="Dal\AdministratorsDB.cs" />
+    <Compile Include="Dal\CoursesDB.cs" />
     <Compile Include="Dal\CoursesScheduleDB.cs" />
     <Compile Include="Dal\LecturerDB.cs" />
+    <Compile Include="Dal\StudentCoursesDB.cs" />
+    <Compile Include="Dal\StudentsDB.cs" />
     <Compile Include="Dal\UsersDB.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Administrator.cs" />
+    <Compile Include="Models\Course.cs" />
     <Compile Include="Models\CoursesSchedule.cs" />
     <Compile Include="Models\Lecturer.cs" />
+    <Compile Include="Models\Student.cs" />
+    <Compile Include="Models\StudentCourses.cs" />
     <Compile Include="Models\User.cs" />
+    <Compile Include="Models\VManageLecturers.cs" />
+    <Compile Include="Models\VManageStudents.cs" />
+    <Compile Include="Models\VMLecturerManageStudents.cs" />
+    <Compile Include="Models\VMLecturerSchedule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -194,6 +205,12 @@
     <Content Include="Views\Administrator\AdministratorLayout.cshtml" />
     <Content Include="Views\Administrator\AdministratorHome.cshtml" />
     <Content Include="Views\Administrator\manageLecturersView.cshtml" />
+    <Content Include="Views\Administrator\manageStudentsView.cshtml" />
+    <Content Include="Views\Administrator\manageCoursesView.cshtml" />
+    <Content Include="Views\Lecturer\LecturerHome.cshtml" />
+    <Content Include="Views\Lecturer\LecturerLayout.cshtml" />
+    <Content Include="Views\Lecturer\LecturerScheduleView.cshtml" />
+    <Content Include="Views\Lecturer\LecturerManageStudents.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

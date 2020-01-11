@@ -12,6 +12,7 @@ namespace LabProject.Controllers
     {
         public ActionResult Index()
         {
+            Session["firstName"] = null;
             return View();
         }
 
@@ -28,7 +29,8 @@ namespace LabProject.Controllers
 
         private bool CheckLecturer(User user)
         {
-            return true;
+            LecturerDB dalLec = new LecturerDB();
+            return ((from x in dalLec.Lecturers where x.UserName == user.UserName select x).ToList().Count == 1);
         }
 
         private bool CheckStudent(User user)
@@ -48,7 +50,7 @@ namespace LabProject.Controllers
             }
 
             //check the text boxes validation 
-            if (ModelState.IsValid)
+            if (ModelState.IsValidField("UserName") && ModelState.IsValidField("Password"))
             {
 
                 UsersDB dal = new UsersDB();
@@ -57,7 +59,7 @@ namespace LabProject.Controllers
                      where (x.UserName == user.UserName
                         && x.Password == user.Password)
                      select x).ToList<User>();
-                
+
                 if (objUsers.Count == 1) //check the user name and password correct
                 {
                     switch (UserType)
@@ -72,7 +74,10 @@ namespace LabProject.Controllers
 
                         case "lecturer":
                             if (CheckLecturer(user))
-                                return View("ShowUserLog");
+                            {
+                                Session["userName"] = user.UserName;
+                                return RedirectToAction("LecturerHome", "Lecturer");
+                            }
                             break;
 
                         case "student":
@@ -82,16 +87,21 @@ namespace LabProject.Controllers
                         default:
                             return View("ShowUserLog");
 
+
+
+                          
                     }
 
-                    return View("ShowUserLog", user);
+                    TempData["errorMessage"] = "user name / password incorrect";
+                    user = new User();
+                    return View("Index");
                 }
-                TempData["errorMessage"] = "user name / password incorrect";
-                user = new User();
-                return View("Index");
+   
             }
             return View("Index");
         }
 
     }
 }
+
+
