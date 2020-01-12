@@ -1,0 +1,30 @@
+﻿@model LabProject.Models.VMExamSchedule
+@{
+    Layout = "~/Views/Student/StudentLayout.cshtml";
+}
+
+<link href="~/Content/AdministratorHomeStyle.css" rel="stylesheet" />
+
+
+<div class="adminInformation-content">
+    <table>
+        <tr class="headers">
+            <td>Course Name</td>
+            <td>First exam date hour</td>
+            <td>Second exam date hour</td>
+        </tr>
+        @{
+            foreach (var row in Model.ExamSchedule)
+            {
+                <tr>
+                    <td>@row.CourseName</td>
+                    <td>@row.MoedADate</td>
+                    <td>@row.MoedBDate</td>
+                </tr>
+            }
+        }
+
+    </table>
+
+
+</div>
