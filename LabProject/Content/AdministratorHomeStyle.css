@@ -26,3 +26,35 @@ th, td {
     width: 80%;
 
 }
+
+.courses-form, grades {
+    height: 100%;
+    width: 33.3%;
+    align-items: center;
+
+    display: flex;
+    justify-content: center;
+
+}
+
+.courses-form select {
+    width: 50%;
+    height: 5%;
+    margin: 5px;
+}
+
+.updateGrade {
+    width: 80%;
+    height: 50%;
+    align-items: center;
+    display: flex;
+    flex-direction:column;
+    justify-content: space-around;
+}
+
+.manageStudents-content {
+    height: 70vh;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}

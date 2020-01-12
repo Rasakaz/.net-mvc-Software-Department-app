@@ -14,18 +14,28 @@ namespace LabProject
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             
-
-
-
-             routes.MapRoute(
-                name: "LecturerManageStudents",
-                url: "Lecturer/LecturerManageStudents",
-                defaults: new { controller = "Lecturer", action = "LecturerManageStudents", id = UrlParameter.Optional }
-            );
             routes.MapRoute(
                 name: "AddCourseToLecturer",
                 url: "Administrator/ManageLecturers/AddCourseToLecturer",
                 defaults: new { controller = "Administrator", action = "AddCourseToLecturer", id = UrlParameter.Optional }
+            );
+
+            routes.MapRoute(
+               name: "StudentExams",
+               url: "Student/StudentExams",
+               defaults: new { controller = "Student", action = "StudentExams", id = UrlParameter.Optional }
+            );
+
+            routes.MapRoute(
+                name: "StudentSchedule",
+                url: "Student/StudentSchedule",
+                defaults: new { controller = "Student", action = "StudentSchedule", id = UrlParameter.Optional }
+            );
+
+            routes.MapRoute(
+                name: "LecturerManageStudents",
+                url: "Lecturer/LecturerManageStudents",
+                defaults: new { controller = "Lecturer", action = "LecturerManageStudents", id = UrlParameter.Optional }
             );
 
             routes.MapRoute(
@@ -50,6 +60,12 @@ namespace LabProject
                 name: "LecturerSchedule",
                 url: "Lecturer/ManageLecturers/LecturerSchedule",
                 defaults: new { controller = "Administrator", action = "LecturerSchedule", id = UrlParameter.Optional }
+            );
+
+            routes.MapRoute(
+                name: "StudentHome",
+                url: "Student",
+                defaults: new { controller = "Student", action = "StudentHome", id = UrlParameter.Optional }
             );
 
             routes.MapRoute(

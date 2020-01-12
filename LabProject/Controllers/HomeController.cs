@@ -35,7 +35,8 @@ namespace LabProject.Controllers
 
         private bool CheckStudent(User user)
         {
-            return true;
+            StudentsDB dal = new StudentsDB();
+            return ((from x in dal.Students where x.UserName == user.UserName select x).ToList().Count == 1);
         }
 
         public ActionResult Submit(User user, string UserType)
@@ -82,14 +83,18 @@ namespace LabProject.Controllers
 
                         case "student":
                             if (CheckStudent(user))
-                                return View("ShowUserLog");
+                            {
+                                Session["userName"] = user.UserName;
+                                return RedirectToAction("StudentHome", "Student");
+                            }
                             break;
                         default:
-                            return View("ShowUserLog");
+                            return View("StudentHome", "Sutdent");
 
 
 
-                          
+
+
                     }
 
                     TempData["errorMessage"] = "user name / password incorrect";

@@ -137,6 +137,7 @@
     <Compile Include="Controllers\AdministratorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LecturerController.cs" />
+    <Compile Include="Controllers\StudentController.cs" />
     <Compile Include="Dal\AdministratorsDB.cs" />
     <Compile Include="Dal\CoursesDB.cs" />
     <Compile Include="Dal\CoursesScheduleDB.cs" />
@@ -156,8 +157,10 @@
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\VManageLecturers.cs" />
     <Compile Include="Models\VManageStudents.cs" />
+    <Compile Include="Models\VMExamSchedule.cs" />
     <Compile Include="Models\VMLecturerManageStudents.cs" />
     <Compile Include="Models\VMLecturerSchedule.cs" />
+    <Compile Include="Models\VMStudentSchedule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -211,6 +214,10 @@
     <Content Include="Views\Lecturer\LecturerLayout.cshtml" />
     <Content Include="Views\Lecturer\LecturerScheduleView.cshtml" />
     <Content Include="Views\Lecturer\LecturerManageStudents.cshtml" />
+    <Content Include="Views\Student\StudentLayout.cshtml" />
+    <Content Include="Views\Student\StudentHome.cshtml" />
+    <Content Include="Views\Student\StudentScheduleView.cshtml" />
+    <Content Include="Views\Student\StudentExam.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

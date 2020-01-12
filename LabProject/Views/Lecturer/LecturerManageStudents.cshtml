@@ -3,16 +3,62 @@
     Layout = "~/Views/Lecturer/LecturerLayout.cshtml";
 }
 
-
-<h2>LecturerManageStudents</h2>
+<link href="~/Content/AdministratorHomeStyle.css" rel="stylesheet" />
+<h2>Manage students</h2>
 
 <div class="manageStudents-content">
 
-    @using (Html.BeginForm("GetCourses", "Lecturer", new { @class = "courses-form"}))
-    {
-        @Html.DropDownListFor(m => m.Student.CourseName, Model.GetCourses ,"Select course")
 
-        <input type="submit" id="btn-course" value="select"/>
+    @using (Html.BeginForm("GetCourses", "Lecturer", FormMethod.Post, new { @class = "courses-form" }))
+    {
+        @Html.DropDownListFor(m => m.Student.CourseName, Model.GetCourses, "Select course")
+
+        <input type="submit" id="btn-course" value="select" />
     }
 
+
+    @{
+        if (Model.StudentsList != null)
+        {
+            using (Html.BeginForm("GetStudents", "Lecturer", FormMethod.Post, new { @class = "courses-form" }))
+            {
+                @Html.DropDownListFor(m => m.StudentName, Model.GetStudents, "Select course")
+
+                <input type="submit" id="btn-course" value="select" />
+            }
+        }
+    }
+
+    @{
+        if (Model.Grades != null)
+        {
+                <div class="grades">
+                    <table>
+                        <tr class="headers">
+                            <td>First exam grade</td>
+                            <td>Secont exam grade</td>
+                        </tr>
+                        <tr>
+                            <td>@Model.Grades[0].MoedAGrade</td>
+                            <td>@Model.Grades[0].MoedBGrade</td>
+
+                        </tr>
+
+                    </table>
+                    @using (Html.BeginForm("UpdateGrade", "Lecturer", FormMethod.Post, new { @class = "updateGrade" }))
+                    {
+                        @Html.TextBoxFor(m => m.Student.MoedAGrade, new { @Value = "Update first exam" })
+
+                        @Html.TextBoxFor(m => m.Student.MoedBGrade, new { @Value = "Update second exam" })
+
+                        <input type="submit" id="btn-course" value="update grade" />
+                        @TempData["message"]
+                    }
+                </div>
+        }
+    }
+
+
+
 </div>
+

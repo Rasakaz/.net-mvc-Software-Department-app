@@ -9,6 +9,7 @@ namespace LabProject.Models
     public class StudentCourses
     {
         [Key]
+        public int ID { get; set; }
         public string UserName { get; set; }
         public string CourseName { get; set; }
         public int MoedAGrade { get; set; }
